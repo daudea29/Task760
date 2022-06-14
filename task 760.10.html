@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onload="onPageLoading()">
+    <label for="mahang">Mã hàng</label>
+    <select name="mahang" id="select-ma-hang">
+        <option value="">Chọn mã hàng</option>
+        <option value="10">TVSamsung 4K Crystal UHD 55 inch UA55AU8100</option>
+        <option value="20">Android Tivi QLED TCL 4k 55 inch 55Q726</option>
+        <option value="30">Smart Tivi LG 4K 55 inch 55UP7750PTB</option>
+        <option value="40">Android Tivi Casper 32 inch 32HG5200</option>
+        <option value="50">Máy lọc nước RO AOSmith C1 4 lõi</option>
+        <option value="60">Quạt điều hòa Kangaroo KG50F79N</option>
+    </select><br><br>
+    <label for="soluong">Số lượng</label>
+    <input type="text" 
+           placeholder="...điền số nguyên dương..."
+           id="inp-so-luong">
+    <br><br>
+    <button id="btn-luu-du-lieu"
+            onclick="onBtnLuuDuLieuClick()"
+            style="background-color: hsl(202, 91%, 33%); color: white">
+    Lưu dữ liệu</button>
+
+</body>
+<script>
+    /*** REGION 1 - Global variables - Vùng khai báo biến, hằng số, tham số TOÀN CỤC */
+    /*** REGION 2 - Vùng gán / thực thi hàm xử lý sự kiện cho các elements */
+    /*** REGION 3 - Event handlers - Vùng khai báo các hàm xử lý sự kiện */
+    function onPageLoading() {
+        var vSelectMaHang = document.getElementById("select-ma-hang");
+        var vInputSoLuong = document.getElementById("inp-so-luong");
+        console.log("Giá trị hiện tại của ô select: " + vSelectMaHang.value);
+        console.log("Select Id: " + vSelectMaHang.id);
+        console.log("Input Id: " + vInputSoLuong.id + ", placeholder: " + vInputSoLuong.placeholder);
+    }
+    function onBtnLuuDuLieuClick() {
+        var vSelectMaHang = document.getElementById("select-ma-hang");
+        var vInputSoLuong = document.getElementById("inp-so-luong");
+        vSoLuongValue = vInputSoLuong.value
+        vMaHangValue = vSelectMaHang.selectedOptions[0].innerHTML;
+        if(vMaHangValue === "") {
+            alert("Bạn phải nhập giá trị mã hàng vào")
+            return
+        }
+        if(vSoLuongValue === "") {
+            alert("Bạn phải nhập số lượng vào")
+            return
+        }
+        if(parseInt(vSoLuongValue) == 0) {
+            alert("Bạn phải nhập vào số nguyên lớn hơn 0");
+            return
+        }
+        vThongTinDonHangObj = {
+            maHang: vMaHangValue,
+            soLuong: vSoLuongValue,
+        }
+        console.log("Thông tin đơn hàng: " + vThongTinDonHangObj.maHang + " " + vThongTinDonHangObj.soLuong)
+    }
+    function kiemTraDuLieu (vThong) {}
+    /*** REGION 4 - Common funtions - Vùng khai báo hàm dùng chung trong toàn bộ chương trình*/
+</script>
+</html>
